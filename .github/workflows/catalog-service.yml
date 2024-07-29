@@ -29,6 +29,10 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+
+      - name: permission of the mvn
+        run: git update-index --chmod=+x mvnw
+
       - name: Build with Maven
         run: ./mvnw -ntp verify
 
