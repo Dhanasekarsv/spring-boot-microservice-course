@@ -33,7 +33,7 @@ jobs:
         run: chmod +x mvnw
 
       - name : Scripts file permission
-        run : chmod +x ./home/runner/work/_temp/*.sh
+        run : chmod +x /home/runner/work/_temp/*.sh
 
       - name: Build with Maven
         run: ./mvnw -ntp verify
