@@ -1,9 +1,9 @@
-name: Catalog Service
+name: Order Service
 
 on:
   push:
     paths:
-      - catalog-service/**
+      - order-service/**
     branches:
       - '**'
   #pull_request:
@@ -14,8 +14,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./catalog-service
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service
+      working-directory: ./order-service
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-order-service
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
@@ -29,11 +29,11 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: before_install
+      - name: Make Maven wrapper executable
         run: chmod +x mvnw
 
-      - name : Scripts file permission
-        run : chmod +x /home/runner/work/_temp/*.sh
+      - name: Scripts file permission
+        run: chmod +x /home/runner/work/_temp/*.sh
 
       - name: Build with Maven
         run: ./mvnw -ntp verify
@@ -50,5 +50,4 @@ jobs:
         run: |
           ./mvnw spring-boot:build-image -DskipTests
           echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service
-
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-order-service
