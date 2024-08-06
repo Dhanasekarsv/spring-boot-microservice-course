@@ -8,7 +8,6 @@ import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +34,6 @@ class RabbitMQConfig {
     @Bean
     Binding newOrdersQueueBinding() {
         return BindingBuilder.bind(newOrdersQueue()).to(exchange()).with(properties.newOrdersQueue());
-        //return BindingBuilder.bind(newOrdersQueue()).to(exchange()).with("new-orders-key");
     }
 
     @Bean
@@ -74,13 +72,13 @@ class RabbitMQConfig {
         rabbitTemplate.setMessageConverter(jacksonConverter(objectMapper));
         return rabbitTemplate;
     }
-/*
-    @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory, ObjectMapper objectMapper) {
-        return new RabbitAdmin(connectionFactory);
-    }
+    /*
+       @Bean
+       public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory, ObjectMapper objectMapper) {
+           return new RabbitAdmin(connectionFactory);
+       }
 
- */
+    */
 
     @Bean
     public Jackson2JsonMessageConverter jacksonConverter(ObjectMapper mapper) {
