@@ -20,6 +20,7 @@ public class ProductServiceClient {
 
     @CircuitBreaker(name = "catalog-service")
     @Retry(name = "catalog-service", fallbackMethod = "getProductByCodeFallback")
+    // if we apply fallback to circuitbreaker also then retry will not be called,
     public Optional<Product> getProductByCode(String code) {
         log.info("Fetching product for code: {}", code);
         var product =
