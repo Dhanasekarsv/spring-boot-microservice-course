@@ -1,19 +1,19 @@
-package com.sivalabs.bookstore.notifications.events;
+package com.dvlabs.bookstore.notifications.events;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
+import com.dvlabs.bookstore.notifications.AbstractIT;
+import com.dvlabs.bookstore.notifications.ApplicationProperties;
+import com.dvlabs.bookstore.notifications.domain.models.Address;
+import com.dvlabs.bookstore.notifications.domain.models.Customer;
+import com.dvlabs.bookstore.notifications.domain.models.OrderCancelledEvent;
+import com.dvlabs.bookstore.notifications.domain.models.OrderCreatedEvent;
+import com.dvlabs.bookstore.notifications.domain.models.OrderDeliveredEvent;
+import com.dvlabs.bookstore.notifications.domain.models.OrderErrorEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sivalabs.bookstore.notifications.AbstractIT;
-import com.sivalabs.bookstore.notifications.ApplicationProperties;
-import com.sivalabs.bookstore.notifications.domain.models.Address;
-import com.sivalabs.bookstore.notifications.domain.models.Customer;
-import com.sivalabs.bookstore.notifications.domain.models.OrderCancelledEvent;
-import com.sivalabs.bookstore.notifications.domain.models.OrderCreatedEvent;
-import com.sivalabs.bookstore.notifications.domain.models.OrderDeliveredEvent;
-import com.sivalabs.bookstore.notifications.domain.models.OrderErrorEvent;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;

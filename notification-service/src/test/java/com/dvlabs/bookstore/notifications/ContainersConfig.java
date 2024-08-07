@@ -1,4 +1,4 @@
-package com.sivalabs.bookstore.notifications;
+package com.dvlabs.bookstore.notifications;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
